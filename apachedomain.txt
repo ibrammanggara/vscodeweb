@@ -1,0 +1,20 @@
+<VirtualHost *:80>
+    ServerName vsc.mel-on.tech
+
+    ProxyPass / http://localhost:8080/
+    ProxyPassReverse / http://localhost:8080/
+
+    ProxyPass /ws/ ws://localhost:8080/ws/
+    ProxyPassReverse /ws/ ws://localhost:8080/ws/
+
+    RewriteEngine On
+
+    # Rewrite untuk WebSocket
+    RewriteCond %{HTTP:Upgrade} websocket [NC]
+    RewriteCond %{HTTP:Connection} upgrade [NC]
+    RewriteRule /(.*) ws://localhost:8080/$1 [P,L]
+
+
+    ErrorLog ${APACHE_LOG_DIR}/yourdomain-error.log
+    CustomLog ${APACHE_LOG_DIR}/yourdomain-access.log combined
+</VirtualHost>
