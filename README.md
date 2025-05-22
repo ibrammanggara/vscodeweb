@@ -1,18 +1,21 @@
-
-
-
-
-
 #### installl
+```
 curl -fsSL https://code-server.dev/install.sh | sh
+```
 
-
-
+## cek password
+```
 /root/.config/code-server/config.yaml 
-
-
-
-
+```
+## install require apache2
+```
+sudo a2enmod proxy
+sudo a2enmod proxy_http
+sudo a2enmod proxy_wstunnel
+sudo a2enmod rewrite
+```
+## proxy to domain vscode
+```
 <VirtualHost *:80>
     ServerName vsc.mel-on.tech
 
@@ -33,3 +36,4 @@ curl -fsSL https://code-server.dev/install.sh | sh
     ErrorLog ${APACHE_LOG_DIR}/yourdomain-error.log
     CustomLog ${APACHE_LOG_DIR}/yourdomain-access.log combined
 </VirtualHost>
+```
