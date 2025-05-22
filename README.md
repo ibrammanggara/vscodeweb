@@ -17,7 +17,7 @@ sudo a2enmod rewrite
 ## proxy to domain vscode
 ```
 <VirtualHost *:80>
-    ServerName vsc.mel-on.tech
+    ServerName {yourdomain.site}
 
     ProxyPass / http://localhost:8080/
     ProxyPassReverse / http://localhost:8080/
